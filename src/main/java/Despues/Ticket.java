@@ -8,6 +8,6 @@ public class Ticket {
     }
 
     public boolean isClosed() {
-    return status == (TicketStatus.CLOSED) || status.equals(TicketStatus.DONE);
+    return status == (TicketStatus.CLOSED) || status == (TicketStatus.DONE);
     }
 }
