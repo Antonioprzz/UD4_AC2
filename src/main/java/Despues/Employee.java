@@ -1,19 +1,24 @@
 package Despues;
 
-public abstract class Employee {
-    protected final double baseSalary;
+public class Employee {
+    public static final int QA = 2;
+    public static final int MANAGER = 3;
 
-    protected Employee(double baseSalary) {
+    private int type;
+    private double baseSalary;
+
+    public Employee(int type, double baseSalary) {
+        this.type = type;
         this.baseSalary = baseSalary;
     }
 
-    public abstract double monthlyPay();
+    public double monthlyPay() {
 
-    public static Employee create(EmployeeType type, double baseSalary) {
-        return switch (type) {
-            case DEV -> new Developer(baseSalary);
-            case QA -> new QaEngineer(baseSalary);
-            case MANAGER -> new Manager(baseSalary);
-        };
+        switch (EmployeeType type) {
+            case DEV: new Developer(baseSalary);
+            case QA: return baseSalary + 100;
+            case MANAGER: return baseSalary + 500;
+            default: throw new IllegalArgumentException("Unknown type");
+        }
     }
 }
